@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import '../screens/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,8 +25,12 @@ class HomePage extends StatelessWidget {
                     textStyle: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold),),
-                  child: Text('LOGIN'),
-                  onPressed: null,
+                  child: Text('LOGOUT'),
+                  onPressed: () async {
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    await prefs.remove('token');
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                  }
                 ),
 
 
@@ -30,6 +38,7 @@ class HomePage extends StatelessWidget {
 
               ),
             ),
+
           ],
         )
     );
