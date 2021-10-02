@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken')
 
 
 async function connectDB() {
- await mongoose.connect("mongodb+srv://auth1:1234@auth.uhrjp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+ await mongoose.connect("connectionCode",
      {useUnifiedTopology: true, useNewUrlParser: true});
  console.log("db connected");
 }
